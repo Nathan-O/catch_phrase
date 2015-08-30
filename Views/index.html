@@ -1,0 +1,159 @@
+<!--
+////////////////////////////////////////////////////////////
+
+						Catchphrase.ly
+						 Page - HTML
+
+////////////////////////////////////////////////////////////
+-->
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>Catchphrase.ly</title>
+		
+  		<!-- jQuery -->
+  		<script src="/vender/jquery/dist/jquery.min.js"></script>
+  		<!-- Underscore -->
+  		<script src="/vender/underscore/underscore-min.js"></script>
+  		<!-- Bootstrap JS -->
+  		<script src="/vender/bootstrap/dist/js/bootstrap.min.js"></script>
+  		<!-- Bootstrap CSS -->
+  		<link rel="stylesheet" href="/vender/bootstrap/dist/css/bootstrap.min.css">
+  		<!-- Local -->
+		<link rel="stylesheet" type="text/css" href="/static/CSS/main.css">
+		<script src="/static/Javascript/app.js"></script>						
+	</head>
+
+	<body>
+		<div class="container"
+		id="page-wrapper">
+		<header class="page-header">
+			<h1>Hello! <small>People</small></h1>
+			<!-- nav -->
+			<div class="container bs-navbar" id="nav" role="banner">
+				<nav role="navagation" class="bs-navbar">
+					<ul class="nav nav-pills">
+						<li role="presentation">Home</li>
+						<li role="presentation" class="dropdown">Contribute</li>
+						<li role="presentation">Review</li>
+					</ul>
+				</nav>
+				<!-- <div class="navbar-header">Home</div>
+				<div class="navbar-header">Contribute</div>
+				<div class="navbar-header">Review</div> -->
+			</div>
+		</header>
+
+		<!-- Content -->
+		<ul class="list-group" id="phrase-list">
+		</ul>
+
+		<div id="question-placeholder"></div>
+
+		<div id="user-add-word">
+			<form>
+				<input type="text" placeholder="Word">
+				<br> <br>
+				<!-- <input type="textarea" placeholder="Definition"> -->
+				<textarea placeholder="Definition Clue"></textarea>
+				<br> <br>
+				<button>Submit</button>
+				<!-- ^ placeholder for now -->
+			</form>
+		</div>
+
+
+
+		<footer>
+			<p>Made by <a href="https://github.com/Nathan-O">Nathan-O</a>
+		</footer>
+
+		<script type="text/template" id="words-template">
+			<li class="list-group-item">
+				<strong>Word:</strong> <%= word %> <br>
+				<span><strong>Definition:</strong> <%= definition %> </span>
+			</li>
+		</script>
+
+		<script type="text/template" id="question-template">
+			<div>
+				<h2 id="question"> <%= hint %> </h2>
+				<br>
+				<ul>
+					<label><input type="radio"> <%= answerA %> </label><br/>
+					<label><input type="radio"> <%= answerB %> </label><br/>
+					<label><input type="radio"> <%= answerC %> </label><br/>
+					<label><input type="radio"> <%= answerD %> </label> 
+				</ul>
+				<br/>
+				<button>Submit</button>
+			</div>
+		</script>
+
+			<!--
+		<script type="text/template" id="answer-template">
+			<label><input type="radio"> <%= a %> </label><br/>
+			<label><input type="radio"> <%= b %> </label><br/>
+			<label><input type="radio"> <%= c %> </label><br/>
+			<label><input type="radio"> <%= d %> </label><br/>
+		</script>
+			-->
+
+	</div>
+	</body>
+
+</html>
+
+
+
+
+
+<!-- 
+///////////////////////////////////////////////////////////////////
+
+/////////// Notes
+
+Game:
+	- Multiple choice
+	- Game board set up: Clue = Definition
+						Answer = Word (Mul.Ch. Radio button)
+	- Button click to submit answer and move to next word
+	- If correct alert you're right, else alert right 
+		answer was...
+	- Progress bar of words gone through (bootstrap)
+	- Play to ten or twenty?
+	- Have difficulty levels
+	- 
+Nav: ** Started, needs finished **
+	- Home: Splash intro for picking difficulty 
+	- Contribute: User can add a word to db (no change 
+		page, hidden form div)
+	- Words: User can find a list of words in db.
+
+
+
+////////////////////////////////////////////////////////////////////
+
+/////////// Snippets
+
+	Gameboard:
+	<div>
+		<h2></h2>
+		<br>
+		<ul>
+			<li><input type="radio"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<button>Submit</button>
+	</div>
+
+
+
+
+///////////////////////////////////////////////////////////////////
+-->
