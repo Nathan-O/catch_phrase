@@ -53,16 +53,22 @@
 
 		<div id="question-placeholder"></div>
 
-		<div id="user-add-word">
-			<form>
-				<input type="text" placeholder="Word">
+		<div id="form-container">
+			<form id="user-add-phrase">
+				<input name="word" type="text" placeholder="Word" id="word-input" requiered>
 				<br> <br>
-				<!-- <input type="textarea" placeholder="Definition"> -->
-				<textarea placeholder="Definition Clue"></textarea>
+				<input name="definition" type="text" placeholder="Clue Defintion" id="definition-input" requiered>
+
+				<!-- <textarea type="input" name="defintion" placeholder="Definition Clue" id="definition-input" form="user-add-phrase" requiered></textarea> -->
 				<br> <br>
-				<button>Submit</button>
+				<button type="submit" class="btn btn-success">Add</button>
 				<!-- ^ placeholder for now -->
 			</form>
+			<p><small> * Help out by adding your own word and definition to make a bigger more challenging game. </small></p>
+			<p><small>* When you're done click the Add button or hit <kbd>enter</kbd>.</small></p>
+
+			<div class="alert alert-success" role="alert" id="contribute-alert">Thanks!!</div>
+			<!-- ^^ test alert ^^ -->
 		</div>
 
 
@@ -151,6 +157,126 @@ Nav: ** Started, needs finished **
 		</ul>
 		<button>Submit</button>
 	</div>
+
+
+	// form from eat.ly to post new foods
+
+	<form class="form-inline" id="new-food-form">
+
+      <input name="name" type="text" class="form-control" id="food-name-input" placeholder="Name">
+
+      <input name="yumminess" type="text" class="form-control" id="food-yumminess-input" placeholder="Yumminess">
+
+      <button type="submit" class="btn btn-default">Add</button>
+
+    </form>
+    /////////////////////////////////////////////////////
+
+    // bootstrap snippets
+
+// little X delete button //
+
+    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+// center a block or div//
+    <div class="center-block">...</div>
+
+// green alert //
+    <div class="alert alert-success" role="alert">...</div>
+    (need to js - $(alert_id).alert())
+
+// progress bar w/ percentage //
+	<div class="progress">
+
+  		<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+
+    		60%
+
+  		</div>
+	</div>
+
+
+    /////////////////////////////////////////////////
+
+    // potential custom alert box w/ neded js
+
+    <div id="dialog" title="Alert message" style="display: none">
+            <div class="ui-dialog-content ui-widget-content">
+                <p>
+                    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0"></span>
+                    <label id="lblMessage">
+                    </label>
+                </p>
+            </div>
+        </div>
+
+    // ******* the js ********
+
+$(document).ready(function(){
+
+  $('#btnTest').click(function(){
+		ShowCustomDialog();
+	});
+
+});
+
+
+function ShowCustomDialog(){
+                
+	ShowDialogBox('Warning','Record updated successfully.','Ok','', 'GoToAssetList',null);
+};
+
+function ShowDialogBox(title, content, btn1text, btn2text, functionText, parameterList) {
+    var btn1css;
+    var btn2css;
+
+    if (btn1text == '') {
+        btn1css = "hidecss";
+    } else {
+        btn1css = "showcss";
+    };
+
+    if (btn2text == '') {
+        btn2css = "hidecss";
+    } else {
+        btn2css = "showcss";
+    };
+
+    $("#lblMessage").html(content);
+
+    $("#dialog").dialog({
+        resizable: false,
+        title: title,
+        modal: true,
+        width: '400px',
+        height: 'auto',
+        bgiframe: false,
+        hide: { effect: 'scale', duration: 400 },
+        buttons: [{text: btn1text,
+                    "class": btn1css,
+                    click: function (){                   
+		        	           	$("#dialog").dialog('close');
+		                    };
+                },
+                {
+                    text: btn2text,
+                    "class": btn2css,
+                    click: function () {
+		                        $("#dialog").dialog('close');
+		                    };
+                }]
+    });
+};
+
+// ******* the css *******
+
+.showcss { 
+	display:block;
+};
+
+.hidecss { 
+	display:none;
+};
 
 
 

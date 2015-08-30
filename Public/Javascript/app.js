@@ -13,6 +13,38 @@ $(document).ready(function(){
 	//sanity check
 	console.log("Works!");
 	getWords();
+
+  $("#user-add-phrase").on("submit", function (e){
+    //e.preventDefault();
+    $("#contribute-alert").alert();
+    $.post("/phrases", $(this).serialize())
+
+      .done(function (res){
+
+        console.log("posted");
+        console.log("Now render");
+
+        getWords();
+        $("#user-add-phrase")[0].reset();
+
+      });
+  });
+
+    /*$("#user-add-phrase").on("submit", function (e){
+        //e.preventDefault();
+        $.post("/phrases", $(this).serialize(function (res){
+            
+            
+            console.log("posted");
+            console.log("Now render");
+
+            
+            $("#user-add-phrase")[0].reset();
+          }));
+          getWords();
+      });
+    */
+
 });
 
 function getWords() {

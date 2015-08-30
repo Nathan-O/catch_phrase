@@ -59,7 +59,7 @@ app.post("/phrases", function (req, res){
 	var newPhrase = req.body;
 	db.Phrases.create(newPhrase, function (err, phrase){
 		if (err){
-			console.log("");
+			console.log("He died, Jim");
 			return res.sendStatus(400);
 		};
 		return (phrase);
@@ -70,7 +70,7 @@ app.delete("/phrases/:id", function (req, res){
 	var id = req.params.id;
 	db.Phrases.remove({_id: id}, function (err, phrase){
 		if (err){
-			console.log("");
+			console.log("It's still here...zombie data.");
 			return res.sendStatus(400);
 		};
 		res.sendStatus(200);
