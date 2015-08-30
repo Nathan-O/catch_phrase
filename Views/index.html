@@ -28,90 +28,137 @@
 	</head>
 
 	<body>
-		<div class="container"
-		id="page-wrapper">
-		<header class="page-header">
-			<h1>Hello! <small>People</small></h1>
-			<!-- nav -->
-			<div class="container bs-navbar" id="nav" role="banner">
-				<nav role="navagation" class="bs-navbar">
-					<ul class="nav nav-pills">
-						<li role="presentation">Home</li>
-						<li role="presentation" class="dropdown">Contribute</li>
-						<li role="presentation">Review</li>
+		<div class="container" id="page-wrapper">
+			<header class="page-header">
+
+				<h1>Hello! <small>People</small></h1>
+
+					<!-- alerts -->
+				<div class="alert alert-success in" role="alert" id="thanks-alert"><h4>Thanks!!</h4><small>You've helped make the game bigger.</small></div>
+						
+				<div class="alert alert-danger in" role="alert" id="delete-alert"><h4>It's dead, Jim</h4><small>Word and clue have been deleted from the game.</small></div>
+				<!--			
+				<div class="nav-container">
+				  	 // Nav tabs //
+					<ul class="nav nav-tabs" role="tablist">
+				    	<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+				    	<li role="presentation"><a href="#game" aria-controls="game" role="tab" data-toggle="tab">Game</a></li>
+				    	<li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">Review</a></li>
+				    	<li></li>
+				    	<button class="btn" id="contribute-button">Contribute</button>
 					</ul>
-				</nav>
-				<!-- <div class="navbar-header">Home</div>
-				<div class="navbar-header">Contribute</div>
-				<div class="navbar-header">Review</div> -->
-			</div>
-		</header>
 
-		<!-- Content -->
-		<ul class="list-group" id="phrase-list">
-		</ul>
+					<div class="form-container" id="contribute-form">
 
-		<div id="question-placeholder"></div>
+						<form id="user-add-phrase">
+							<input name="word" type="text" placeholder="Word" id="word-input" requiered>
+							<br> <br>
+							<input name="definition" type="text" placeholder="Clue Defintion" id="definition-input" requiered>
+							<br> <br>
+							<button type="submit" class="btn btn-success btn-xs">Add</button>
+						</form>
 
-		<div id="form-container">
-			
-			<form id="user-add-phrase">
-				<input name="word" type="text" placeholder="Word" id="word-input" requiered>
-				<br> <br>
-				<input name="definition" type="text" placeholder="Clue Defintion" id="definition-input" requiered>
-				<br> <br>
-				<button type="submit" class="btn btn-success">Add</button>
-			</form>
+						<button class="btn btn-danger btn-xs" id="word-add-cancel">Cancel</button>
 
-			<p><small> * Help out by adding your own word and definition to make a bigger more challenging game. </small></p>
-			<p><small>* When you're done click the Add button or hit <kbd>enter</kbd>.</small></p>
+						<p><small> * Help out by adding your own word and definition to make a bigger more challenging game.</small></p>
+						<p><small>* When you're done click the Add button or hit <kbd>enter</kbd>.</small></p>
+					</div>
+						// Tab panes //
+					<div class="tab-content">
+				    	<div role="tabpanel" class="tab-pane active" id="home">Home...info</div>
+				    	<div role="tabpanel" class="tab-pane" id="game"> The game</div>
+				    	<div role="tabpanel" class="tab-pane" id="review">
+				    		<p>A place to review words</p>
+				    		<ul class="list-group" id="phrase-list"></ul>
+				    	</div>
+					</div>
+				</div> -->
+			</header>
 
-			<div class="alert alert-success" role="alert" id="contribute-alert">Thanks!!</div>
-			<!-- ^^ test alert ^^ -->
+			<!-- Content -->
+			<div class="nav-container">
+				  	 <!-- // Nav tabs // -->
+					<ul class="nav nav-tabs" role="tablist">
+				    	<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+				    	<li role="presentation"><a href="#game" aria-controls="game" role="tab" data-toggle="tab">Game</a></li>
+				    	<li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">Review</a></li>
+				    	<li></li>
+				    	<button class="btn" id="contribute-button">Contribute</button>
+					</ul>
+
+					<div class="form-container" id="contribute-form">
+
+						<form id="user-add-phrase">
+							<input name="word" type="text" placeholder="Word" id="word-input" requiered>
+							<br> <br>
+							<input name="definition" type="text" placeholder="Clue Defintion" id="definition-input" requiered>
+							<br> <br>
+							<button type="submit" class="btn btn-success btn-xs">Add</button>
+						</form>
+
+						<button class="btn btn-danger btn-xs" id="word-add-cancel">Cancel</button>
+
+						<p><small>* Help out by adding your own word and definition to make a bigger more challenging game.</small></p>
+						<p><small>* When you're done click the Add button or hit <kbd>enter</kbd>.</small></p>
+					</div>
+						<!-- // Tab panes // -->
+					<div class="tab-content">
+				    	<div role="tabpanel" class="tab-pane active" id="home">Home...info</div>
+
+				    	<div role="tabpanel" class="tab-pane" id="game"> 
+				    		<h2>The game</h2>
+				    		<button>Play</button>
+				    		<div id="question-placeholder"></div>
+				    	</div>
+
+				    	<div role="tabpanel" class="tab-pane" id="review">
+				    		<h2>Review game words</h2>
+				    		<ul class="list-group" id="phrase-list"></ul>
+				    	</div>
+					</div>
+
+				</div>
+			<!-- <ul class="list-group" id="phrase-list">
+			</ul> -->
+
+			<!-- <div id="question-placeholder"></div> -->
+
+			<footer>
+				<p>Made by <a href="https://github.com/Nathan-O">Nathan-O</a>
+			</footer>
+
+			<script type="text/template" id="words-template">
+				<li class="list-group-item">
+					<strong>Word:</strong> <%= word %> <br>
+					<span><strong>Definition:</strong> <%= definition %> </span>
+					<button data-_id="<%= _id %>" onclick="deletePhrase(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</li>
+			</script>
+
+			<script type="text/template" id="question-template">
+				<div>
+					<h2 id="question"> <%= hint %> </h2>
+					<br>
+					<ul>
+						<label><input type="radio"> <%= answerA %> </label><br/>
+						<label><input type="radio"> <%= answerB %> </label><br/>
+						<label><input type="radio"> <%= answerC %> </label><br/>
+						<label><input type="radio"> <%= answerD %> </label> 
+					</ul>
+					<br/>
+					<button>Submit</button>
+				</div>
+			</script>
+
+				<!--
+			<script type="text/template" id="answer-template">
+				<label><input type="radio"> <%= a %> </label><br/>
+				<label><input type="radio"> <%= b %> </label><br/>
+				<label><input type="radio"> <%= c %> </label><br/>
+				<label><input type="radio"> <%= d %> </label><br/>
+			</script>
+				-->
 		</div>
-
-
-
-		<footer>
-			<p>Made by <a href="https://github.com/Nathan-O">Nathan-O</a>
-		</footer>
-
-		<script type="text/template" id="words-template">
-			<li class="list-group-item">
-				<strong>Word:</strong> <%= word %> <br>
-				<span><strong>Definition:</strong> <%= definition %> </span>
-				<button data-_id="<%= _id %>" onclick="deletePhrase(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			</li>
-
-			
-
-		</script>
-
-		<script type="text/template" id="question-template">
-			<div>
-				<h2 id="question"> <%= hint %> </h2>
-				<br>
-				<ul>
-					<label><input type="radio"> <%= answerA %> </label><br/>
-					<label><input type="radio"> <%= answerB %> </label><br/>
-					<label><input type="radio"> <%= answerC %> </label><br/>
-					<label><input type="radio"> <%= answerD %> </label> 
-				</ul>
-				<br/>
-				<button>Submit</button>
-			</div>
-		</script>
-
-			<!--
-		<script type="text/template" id="answer-template">
-			<label><input type="radio"> <%= a %> </label><br/>
-			<label><input type="radio"> <%= b %> </label><br/>
-			<label><input type="radio"> <%= c %> </label><br/>
-			<label><input type="radio"> <%= d %> </label><br/>
-		</script>
-			-->
-
-	</div>
 	</body>
 
 </html>
@@ -177,6 +224,35 @@ Nav: ** Started, needs finished **
 
     // bootstrap snippets
 
+// tabs nav markup (w/ needed js) //
+
+	<div>
+
+	  // Nav tabs //
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+	    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+	    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+	    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+	  </ul>
+
+	  // Tab panes //
+	  <div class="tab-content">
+	    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+	    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+	    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+	    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+	  </div>
+
+	</div>
+
+	******* the js *******
+
+	$('#myTabs a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	})
+
 // little X delete button //
 
     <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -199,7 +275,9 @@ Nav: ** Started, needs finished **
 	</div>
 
 
-    /////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
     // potential custom alert box w/ neded js
 

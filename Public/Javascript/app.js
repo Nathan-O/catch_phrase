@@ -10,48 +10,55 @@
 
 
 $(document).ready(function(){
-	//sanity check
+	   //sanity check
 	console.log("Works!");
+    //render words in review tab
 	getWords();
 
   $("#user-add-phrase").on("submit", function (e){
-    //e.preventDefault();
-    $("#contribute-alert").alert();
-    $.post("/phrases", $(this).serialize())
-
-      .done(function (res){
-
-        console.log("posted");
-        console.log("Now render");
-
-        getWords();
-        $("#user-add-phrase")[0].reset();
-
-      });
+    e.preventDefault();
+        //slide away form and pop out alert
+    $("#contribute-form").slideToggle();
+    $("#thanks-alert").slideToggle();
+      //add new phrase
+    $.post("/phrases", $(this).serialize()) 
+      //clear form
+    $("#user-add-phrase")[0].reset();  
+    getWords();    //render new phrase to review tab
+    closeAlert("#thanks-alert", 2500); //closes alert
   });
 
-    /*$("#user-add-phrase").on("submit", function (e){
-        //e.preventDefault();
-        $.post("/phrases", $(this).serialize(function (res){
-            
-            
-            console.log("posted");
-            console.log("Now render");
+ $("#contribute-button").on("click", function (e) {
+      e.preventDefault();
+      $("#contribute-form").slideToggle(); 
+  });
 
-            
-            $("#user-add-phrase")[0].reset();
-          }));
-          getWords();
-      });
-    */
+ $("#word-add-cancel").on("click", function (e) {
+      e.preventDefault();
+      $("#contribute-form").slideToggle(); 
+  });
 
 });
+ 
+  
+
+// *** test nav js *** //
+$('#myTabs a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+});
+
+function closeAlert(selector, delay) {
+   var alert = $(selector).alert();
+   window.setTimeout(function() { alert.slideToggle() }, delay);
+   
+};
 
 function getWords() {
 	$.get("/phrases", function (res){
 		words = res.reverse();
 		console.log(words);
-		//return words
+		//render words
 		renderWords(words);
 	});
 };
@@ -72,7 +79,8 @@ function deletePhrase(context){
       url: "/phrases/" + phraseID,
       type: "DELETE",
       success: function(res){
-        alert("Deleted");
+        $("#delete-alert").slideToggle();
+        closeAlert("#delete-alert", 2500);
         getWords();
       }
   });

@@ -8,6 +8,36 @@
 */
 
 
+#contribute-form {
+	z-index: 6;
+	background-color: lightgrey;
+	border: 5px black solid;
+	padding: 20px;
+	width: 450px;
+	float: right;
+	position: relative;
+	display: none;
+}
+
+#contribute-button {
+	border: 1px black solid;
+	position: relative;
+	float: right;
+}
+
+#delete-alert {
+	display: none;
+	position: relative;
+}
+
+#thanks-alert {
+	display: none;
+	position: relative;
+}
+
+
+
+
 
 
 
