@@ -1,0 +1,24 @@
+{
+  "name": "catch_phrase",
+  "version": "1.0.0",
+  "description": "npm install needs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nathan-O/catch_phrase.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nathan-O/catch_phrase/issues"
+  },
+  "homepage": "https://github.com/Nathan-O/catch_phrase#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.3"
+  }
+}

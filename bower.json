@@ -1,0 +1,22 @@
+{
+  "name": "catch_phrase",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Nathan-O/catch_phrase",
+  "authors": [
+    "Nathan Ockerman <ockerman.ns@gmail.com>"
+  ],
+  "description": "bower install needs for project",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3"
+  }
+}
