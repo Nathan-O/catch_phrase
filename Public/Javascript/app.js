@@ -66,6 +66,19 @@ function renderWords(words) {
 	$('#phrase-list').append(wordListItem);
 };
 
+function deletePhrase(context){
+  var phraseID = $(context).data()._id;
+  $.ajax({
+      url: "/phrases/" + phraseID,
+      type: "DELETE",
+      success: function(res){
+        alert("Deleted");
+        getWords();
+      }
+  });
+};
+
+
 ////////////////////////////////////////////////////////
 // For Gameboard //
 
@@ -208,7 +221,8 @@ random and set as the wrong answers for each question.
 
 ////////// Snippets
 
-// eat.ly app.js (solution)
+// eat.ly app.js (solution) *******
+
 // On page load
 $(function() {
   pageLoad();

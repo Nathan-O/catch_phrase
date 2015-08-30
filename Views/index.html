@@ -54,16 +54,15 @@
 		<div id="question-placeholder"></div>
 
 		<div id="form-container">
+			
 			<form id="user-add-phrase">
 				<input name="word" type="text" placeholder="Word" id="word-input" requiered>
 				<br> <br>
 				<input name="definition" type="text" placeholder="Clue Defintion" id="definition-input" requiered>
-
-				<!-- <textarea type="input" name="defintion" placeholder="Definition Clue" id="definition-input" form="user-add-phrase" requiered></textarea> -->
 				<br> <br>
 				<button type="submit" class="btn btn-success">Add</button>
-				<!-- ^ placeholder for now -->
 			</form>
+
 			<p><small> * Help out by adding your own word and definition to make a bigger more challenging game. </small></p>
 			<p><small>* When you're done click the Add button or hit <kbd>enter</kbd>.</small></p>
 
@@ -81,7 +80,11 @@
 			<li class="list-group-item">
 				<strong>Word:</strong> <%= word %> <br>
 				<span><strong>Definition:</strong> <%= definition %> </span>
+				<button data-_id="<%= _id %>" onclick="deletePhrase(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</li>
+
+			
+
 		</script>
 
 		<script type="text/template" id="question-template">
