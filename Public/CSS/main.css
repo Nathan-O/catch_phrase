@@ -7,6 +7,14 @@
 ////////////////////////////////////////////////////////////////					   
 */
 
+#gameBoard {
+	border: 5px green solid;
+	border-radius: 10px;
+	background-color: lightgrey;
+	padding: 25px;
+	margin-top: 10px;
+}
+
 
 #contribute-form {
 	z-index: 6;
@@ -33,6 +41,22 @@
 #thanks-alert {
 	display: none;
 	position: relative;
+}
+
+#right-alert {
+	display: none;
+	position: relative;
+}
+
+#wrong-alert {
+	display: none;
+	position: relative;
+}
+
+#gameOver-alert {
+	display: none;
+	position: relative;
+	height: 500px;
 }
 
 #question {
