@@ -28,14 +28,18 @@ $(document).ready(function(){
     closeAlert("#thanks-alert", 2500); //closes alert
   });
 
- $("#contribute-button").on("click", function (e) {
+  $("#contribute-button").on("click", function (e) {
       e.preventDefault();
       $("#contribute-form").slideToggle(); 
   });
 
- $("#word-add-cancel").on("click", function (e) {
+  $("#word-add-cancel").on("click", function (e) {
       e.preventDefault();
       $("#contribute-form").slideToggle(); 
+  });
+
+  $("#game-start").on("click", function(){
+    getGameWords();
   });
 
 });
@@ -89,6 +93,39 @@ function deletePhrase(context){
 
 ////////////////////////////////////////////////////////
 // For Gameboard //
+var turns = 0;
+var score = 0;
+var correctAnswer;
+
+function getAnswer(e){
+  e.preventDefault();
+  $("#answer-list").submit(function (e){
+    e.preventDefault();
+  });
+      // 1st if statment
+  if (turns < 10) {
+
+      console.log("< 10");
+
+      var answerPicked = $('input[name="answerRadio"]:checked').val();
+      alert("Pick: " + answerPicked + " | Answer: " + correctAnswer);
+        // 2nd (nested) if statment
+      if (answerPicked === correctAnswer) { 
+          alert("You're right!");
+          score += 1;
+          turns += 1;
+      } else if (answerPicked !== correctAnswer){
+          alert("Opps not quite. The answer was: " + answer);
+          turns += 1;
+      };
+
+      getGameWords();
+
+  } else if (turns >= 10) {
+      alert("Finished. Your score is: " + score);
+  };
+};
+
 
 function getGameWords(){
 	var phrases = words;
@@ -99,43 +136,11 @@ function getGameWords(){
 function randoQuestion(phrases){
 	var randomGet = {};
 	randomGet = phrases[_.random(phrases.length-1)];
-	//var getWrong = wrongAnswer[_.random(wrongAnswer.length-1)];
 	console.log(randomGet);
-	//console.log(getWrong);
+
 	getQuestion(randomGet);
 };
 
-function renderAnswers(clue, a, b, c, d){
-	console.log("Clue: " + clue + ", A: " + a + ", B: " + b + ", C: " + c + ", D: " + d);
-	var questionInfo = { hint: "",
-						answerA: "",
-						answerB: "",
-						answerC: "",
-						answerD: ""
-						};
-
-	questionInfo.hint = clue;
-	questionInfo.answerA = a;
-	questionInfo.answerB = b;
-	questionInfo.answerC = c;
-	questionInfo.answerD = d;
-	console.log(questionInfo);
-
-	var questionTemplate = _.template($("#question-template").html());
-	console.log(questionTemplate);
-	/*var wordListItem = words.map(function (word){
-		return template(word);
-	});*/
-	var questionHTML = questionTemplate(questionInfo);
-	console.log(questionHTML);  // qClue, answerA, answerB, answerC, answerD
-	//$('#question-placeholder').html('');
-	$('#question-placeholder').append(questionHTML);
-	//console.log(a, b, c, d);
-};
-
-////////////////////////////////////////////
-
-// test question render
 function getQuestion(phrase){
   var aA;
   var bB;
@@ -161,23 +166,51 @@ function getQuestion(phrase){
     bB = wrong2;
     cC = answer; //correct
     dD = wrong3;
+    correctAnswer = "3";
   } else if (randomNum === 2) {
     aA = wrong1;
     bB = answer; //correct
     cC = wrong2;
     dD = wrong3;
+    correctAnswer = "2";
   } else if (randomNum === 3) {
     aA = wrong1;
     bB = wrong2;
     cC = wrong3;
     dD = answer; //correct
+    correctAnswer = "4";
   } else if (randomNum === 4) {
     aA = answer; //correct
     bB = wrong1;
     cC = wrong2;
     dD = wrong3;
+    correctAnswer = "1";
   };
   renderAnswers(clue, aA, bB, cC, dD);
+};
+
+function renderAnswers(clue, a, b, c, d){
+	console.log("Clue: " + clue + ", A: " + a + ", B: " + b + ", C: " + c + ", D: " + d);
+	var questionInfo = { hint: "",
+						answerA: "",
+						answerB: "",
+						answerC: "",
+						answerD: ""
+						};
+
+	questionInfo.hint = clue;
+	questionInfo.answerA = a;
+	questionInfo.answerB = b;
+	questionInfo.answerC = c;
+	questionInfo.answerD = d;
+	console.log(questionInfo);
+
+	var questionTemplate = _.template($("#question-template").html());
+	console.log(questionTemplate);
+	var questionHTML = questionTemplate(questionInfo);
+	console.log(questionHTML);  // qClue, answerA, answerB, answerC, answerD
+	$('#question-placeholder').html('');
+	$('#question-placeholder').append(questionHTML);
 };
 
 ////////////////////////////////////////////
@@ -219,88 +252,13 @@ var wrongAnswer = ["Fish",
 
 /////////// Notes
 
-I need to write a list of wrong words that can be picked at 
-random and set as the wrong answers for each question.
-
- 
 
 
 //////////////////////////////////////////////////////////////////////////
 
 ////////// Snippets
 
-// eat.ly app.js (solution) *******
 
-// On page load
-$(function() {
-  pageLoad();
-});
-
-// function definitions
-
-function pageLoad() {
-  // load foods
-  getFoods();
-  // set event listeners
-  $("#new-food-form").on("submit", function(e){
-    // prevent form submission
-    e.preventDefault();
-    // post to food#create
-    $.post("/foods", $(this).serialize())
-      .done(function(res){
-        // append new food to the page
-        getFoods();
-        $("#new-food-form")[0].reset();
-      });
-  });
-}
-
-function getFoods() {
-  $.get("/foods", function(res){
-    var foods = res.reverse();
-    // grab foods template
-    renderFoods(foods)
-  });
-}
-
-function renderFoods(foods) {
-  template = _.template($("#foods-template").html());
-  // input foods into template and append to parent
-  foodItems = foods.map(function(food) {
-    return template(food);
-  });
-  // clear content (for repeated use)
-  $("#food-ul").html("");
-  // append foods to ul
-  $("#food-ul").append(foodItems);
-}
-
-function deleteFood(context) {
-  var foodId = $(context).data()._id;
-  $.ajax({
-    url: '/foods/' + foodId,
-    type: 'DELETE',
-    success: function(res) {
-      // once successfull, re-render all foods
-      getFoods();
-    }
-  });
-}
-////////////////////////////////
-////////////////////////////////
-////////////////////////////////
-
-//random array element with underscore
-var randomElement = randomArray[_.random(randomArray.length-1)];
-
-random number 1-4
-
-var amount = 4;
-for(i = 0;i <amount; i++)
-{
-    var randomnumber=Math.floor(Math.random()*amount)+1
-    console.log(randomnumber);
-};
 
 //////////////////////////////////////////////////////////////////////////
 */
