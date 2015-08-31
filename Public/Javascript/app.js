@@ -119,17 +119,17 @@ function getAnswer(e){
 
   } else if (turns === 9) {
     var answerPicked = $('input[name="answerRadio"]:checked').val();
-      alert("Pick: " + answerPicked + " | Answer: " + correctAnswer);
+      //alert("Pick: " + answerPicked + " | Answer: " + correctAnswer);
         // 3rd (nested) if statment
       if (answerPicked === correctAnswer) {           
-          $("#right-alert").slideToggle();      //same as above statment minus the getGameWords();
+          //$("#right-alert").slideToggle();      //same as above statment minus the getGameWords();
           score += 1;
           turns += 1;
-          closeAlert("#right-alert", 1500);
+          //closeAlert("#right-alert", 1500);
       } else if (answerPicked !== correctAnswer){
-          $("#wrong-alert").slideToggle();
+          //$("#wrong-alert").slideToggle();
           turns += 1;
-          closeAlert("#wrong-alert", 1500);
+          //closeAlert("#wrong-alert", 1500);
       };
       $('#question-placeholder').html('');
       $("#gameOver-alert").slideToggle();
@@ -242,41 +242,48 @@ function renderAnswers(clue, a, b, c, d){
 
 // Array of possible wrong answers //
 
-var wrongAnswer = ["Fish",
-				"Tool",
-				"Ardvark",
-				"Fan",
-				"Street",
-				"Breath",
-				"Pirate",
-				"Gold",
-				"Silver",
-				"Heat",
-				"Quail",
-				"Pencil",
-				"Rupture",
-				"Price",
-				"Block",
-				"Movie",
-				"Shoe",
-				"Enrage",
-				"Chivalry",
-				"Ocean",
-				"Pride",
-				"Muscle",
-				"Sheep",
-				"Fleece",
-				"Warning",
-				"Power",
-				"Electricity",
-				"Computer"
+// hardcoded now, would like to add to database
+// and potentially add to the contribution section
+
+var wrongAnswer = ["Byte",
+				"jQuery",
+				"URL",
+				"Terminal",
+				"Database",
+				"WWW",
+				"Protocol",
+				"ISP",
+				"Bootstrap",
+				"MongoDB",
+				"Node",
+				"R-E-S-P-E-C-T",
+				"HTML",
+				"Javascript",
+				"Ruby",
+				"Rails",
+				"Tardis",
+				"localhost:3000",
+				"Property",
+				"Git",
+				"DOM",
+				"RAM",
+				"Infinite Loop",
+				"Method",
+				"Attribute",
+				"NCC-1701-D",
+				"Toggle Class",
+				"Underscore",
+        "Sushirrito",
+        "Computer",
+        "Computer",
+        "Computer",
+        "competer",
 				];
 
 /*
 ///////////////////////////////////////////////////////////////////////////
 
 /////////// Notes
-
 
 
 //////////////////////////////////////////////////////////////////////////

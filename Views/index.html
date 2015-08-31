@@ -22,6 +22,8 @@
   		<script src="/vender/bootstrap/dist/js/bootstrap.min.js"></script>
   		<!-- Bootstrap CSS -->
   		<link rel="stylesheet" href="/vender/bootstrap/dist/css/bootstrap.min.css">
+  		<!-- Font -->
+  		<link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
   		<!-- Local -->
 		<link rel="stylesheet" type="text/css" href="/static/CSS/main.css">
 		<script src="/static/Javascript/app.js"></script>						
@@ -31,12 +33,12 @@
 		<div class="container" id="page-wrapper">
 			<header class="page-header">
 
-				<h1>Hello! <small>People</small></h1>
+				<h1 id="pageTitle">Wordsmith.  <small>A word game.</small></h1>
 
 					<!-- alerts -->
-				<div class="alert alert-success in" role="alert" id="thanks-alert"><h4>Thanks!!</h4><small>You've helped make the game bigger.</small></div>
+				<div class="alert alert-success in" role="alert" id="thanks-alert"><h3>Thanks!!</h3><small>You've helped make the game bigger.</small></div>
 						
-				<div class="alert alert-danger in" role="alert" id="delete-alert"><h4>It's dead, Jim</h4><small>Word and clue have been deleted from the game.</small></div>
+				<div class="alert alert-danger in" role="alert" id="delete-alert"><h3>It's dead, Jim</h3><small>Word and clue have been deleted from the game.</small></div>
 				
 			</header>
 
@@ -60,34 +62,41 @@
 							<br> <br>
 							<button type="submit" class="btn btn-success btn-xs">Add</button>
 						</form>
-
+						<br/>
 						<button class="btn btn-danger btn-xs" id="word-add-cancel">Cancel</button>
-
-						<p><small>* Help out by adding your own word and definition to make a bigger more challenging game.</small></p>
-						<p><small>* When you're done click the Add button or hit <kbd>enter</kbd>.</small></p>
+						<br/>
+						<p><small>* Help out by adding your own word and definition to make a bigger more challenging game. When you're done click the Add button or hit <kbd>enter</kbd>.</small></p>
 					</div>
+
 						<!-- // Tab panes // -->
 					<div class="tab-content">
-				    	<div role="tabpanel" class="tab-pane active" id="home">Home...info</div>
+				    	<div role="tabpanel" class="tab-pane active" id="home">
+				    		<div class="col-md-8" id="home-page">
+				    			<h1 id="homeTitle">Hello! <small>Welcome to Wordsmith.</small></h1>
+				    			<br/>
+				    			<h4>This simple game is nothing more than matching words to is described definition. Play as many times as you'd like, enjoy; and if you have any words you'd like to add to help make the game more challenging, just click the Contribute button at the top of the screen.</h4>
+				    			<br/>
+				    			<p>- Wordsmithy</p>
+				    		</div>
+				    	</div>
 				    		<!-- to play the game -->
 				    	<div role="tabpanel" class="tab-pane" id="game"> 
 				    		<br/><br/>
 				    			<!-- alerts -->
-				    		<div class="alert alert-success in" role="alert" id="right-alert"><h4>Correct!</h4><small>Doesn't it feel good to get one right?</small></div>
+				    		<div class="alert alert-success in" role="alert" id="right-alert"><h3>Correct!</h3><small>Doesn't it feel good to get one right?</small></div>
 						
-							<div class="alert alert-danger in" role="alert" id="wrong-alert"><h4>Oops...not quite</h4><small>The word you chose was a good one. But not the right one.</small></div>
+							<div class="alert alert-danger in" role="alert" id="wrong-alert"><h3>Oops...not quite</h3><small>The word you chose was a good one. But not the right one.</small></div>
 
-							<div class="alert alert-primary in" role="alert" id="gameOver-alert"><h1>That's all!!</h1><small>Hope you enjoyed. Play again if you'd like, or go enjoy your life and have a great day!</small></div>
-
-				    		<button class="btn btn-primary btn-block" id="game-start">Play the Game</button>
+							<div class="alert alert-info in" role="alert" id="gameOver-alert"><h1>That's all!!</h1><small>Hope you enjoyed. Play again if you'd like, or go enjoy your life and have a great day!</small></div>
 				    		<!-- game questions placeholder -->
 				    		<div id="question-placeholder"></div>
 				    		<!-- end of game placeholder -->
-				    		<div id="game-end-placeholder"></div>
+				    		<!-- <div id="game-end-placeholder"></div> -** doesn't work. **-->
+				    		<button class="btn btn-primary btn-block" id="game-start">Play the Game</button>
 				    	</div>
 
 				    	<div role="tabpanel" class="tab-pane" id="review">
-				    		<h2>Review game words</h2>
+				    		<h1>Review game words</h1>
 				    		<!-- phrase list placeholder -->
 				    		<ul class="list-group" id="phrase-list"></ul>
 				    	</div>

@@ -13,6 +13,7 @@
 	background-color: lightgrey;
 	padding: 25px;
 	margin-top: 10px;
+	margin-bottom: 50px;
 }
 
 
@@ -61,6 +62,33 @@
 
 #question {
 	color: green;
+}
+
+footer {
+	margin-top: 100px;
+}
+
+#home-page {
+	border: 5px green solid;
+	border-radius: 10px;
+	background-color: lightgrey;
+	margin-top: 25px;
+}
+
+#homeTitle {
+	color: green;
+}
+
+h1 {
+	font-family: 'Special Elite', cursive;
+}
+
+h3 {
+	font-family: 'Special Elite', cursive;
+}
+
+#pageTitle {
+	font-size: 50px;
 }
 
 
