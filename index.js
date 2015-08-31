@@ -20,25 +20,6 @@ app.use("/static", express.static("Public"));
 app.use("/vender", express.static("bower_components"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-
-// Mock Data //
-var phrase = [{
-			word: "Beer",
-			definition: "Like Bread, to drink"
-		},{
-			word: "Pants",
-			definition: "Clothes worn on the lower body."
-		},{
-			word: "Guitar",
-			definition: "Musical instrument that uses six strings"
-		},{
-			word: "Lamp",
-			definition: "Device used to illuminate a room."
-		},{
-			word: "Island",
-			definition: "A section of land surrounded on all sides by water."
-		}];
-
 // Routes //
 app.get("/", function (req, res){
 	res.sendFile(path.join(views + "index.html"));

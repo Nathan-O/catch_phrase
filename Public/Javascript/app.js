@@ -53,22 +53,20 @@ $('#myTabs a').click(function (e) {
 });
 
 function closeAlert(selector, delay) {
-    var alert = $(selector).alert();
+    var alert = $(selector).alert();    //closes alerts on a time delay
     window.setTimeout(function() { alert.slideToggle() }, delay); 
 };
 
-function getWords() {
+function getWords() { //grab words and definitions from db
 	$.get("/phrases", function (res){
 		  words = res.reverse();
-	
 		  //render words
 		  renderWords(words);
 	});
 };
 
-function renderWords(words) {
+function renderWords(words) {   //template function
     var template = _.template($("#words-template").html());
-	
   	var wordListItem = words.map(function (word){
     	return template(word);
     });
@@ -117,27 +115,22 @@ function getAnswer(e){
       };
       getGameWords();
 
-  } else if (turns === 9) {
+  } else if (turns === 9) {   //last turn
     var answerPicked = $('input[name="answerRadio"]:checked').val();
-      //alert("Pick: " + answerPicked + " | Answer: " + correctAnswer);
         // 3rd (nested) if statment
       if (answerPicked === correctAnswer) {           
-          //$("#right-alert").slideToggle();      //same as above statment minus the getGameWords();
-          score += 1;
-          turns += 1;
-          //closeAlert("#right-alert", 1500);
+          score += 1;                             // Same as above statment 
+          turns += 1;                             // minus the getGameWords();
       } else if (answerPicked !== correctAnswer){
-          //$("#wrong-alert").slideToggle();
           turns += 1;
-          //closeAlert("#wrong-alert", 1500);
       };
       $('#question-placeholder').html('');
       $("#gameOver-alert").slideToggle();
       closeAlert("#gameOver-alert", 6500);
-      alert("Yay all done. Your score is: " + score);
+      alert("Yay all done. Your score is: " + score + " / 10");
   }; /*else if (turns === 10) {
       //var gameData = score;
-      //renderEndScreen();
+      //renderEndScreen();    // *** didn't work *** //
   };*/
 };
 
@@ -147,8 +140,8 @@ function getGameWords(){
 	randoQuestion(phrases);
 };
 
-function randoQuestion(phrases){
-	var randomGet = {};
+function randoQuestion(phrases){    // Randomize the questions and 
+	var randomGet = {};               // answer object pulled from the db.
 	randomGet = phrases[_.random(phrases.length-1)];
 	getQuestion(randomGet);
 };
@@ -277,7 +270,12 @@ var wrongAnswer = ["Byte",
         "Computer",
         "Computer",
         "Computer",
-        "competer",
+        "Terminal",
+        "IP Address",
+        "Gigabyte",
+        "Mongod",
+        "Express",
+        "Nodemon",
 				];
 
 /*
